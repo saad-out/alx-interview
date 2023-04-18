@@ -16,7 +16,7 @@ def pascal_triangle(n):
     """
     if n <= 0:
         return []
-    
+
     pascal = [[1]]
     top_row = [1]
 
@@ -34,5 +34,5 @@ def pascal_triangle(n):
             new_row.append(left + right)
         pascal.append(new_row)
         top_row = new_row
-    
+
     return pascal
