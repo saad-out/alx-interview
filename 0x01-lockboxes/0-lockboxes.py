@@ -44,6 +44,6 @@ def unlockBox(current_box, boxes_keys, boxes):
         return True
 
     for key, unlocked in boxes_keys.items():
-        if not unlocked:
+        if (not unlocked) and (key < len(boxes) and key >= 0):
             return unlockBox(key, boxes_keys, boxes)
     return False
