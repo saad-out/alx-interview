@@ -4,16 +4,15 @@ This module contains a script that reads from stdin and computes metrics
 """
 import re
 import sys
-from typing import Optional, Tuple, Dict
 
 
-PATTERN: str = (r"^(\d{0,3}\.){3}\d{0,3} "
-                r"- \[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}\] "
-                r"\"GET /projects/260 HTTP/1\.1\" "
-                r"(\d{3}) (\d+)$")
+PATTERN = (r"^(\d{0,3}\.){3}\d{0,3} "
+           r"- \[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}\] "
+           r"\"GET /projects/260 HTTP/1\.1\" "
+           r"(\d{3}) (\d+)$")
 
 
-def extract_status_and_size(line: str) -> Tuple[Optional[str], Optional[str]]:
+def extract_status_and_size(line):
     """
     Extracts the status code and size from a log line
 
@@ -31,7 +30,7 @@ def extract_status_and_size(line: str) -> Tuple[Optional[str], Optional[str]]:
         return None, None
 
 
-def printMetrics(total_size: int, status_codes: Dict[str, int]) -> None:
+def printMetrics(total_size, status_codes):
     """
     Prints the metrics for the log lines read so far
 
@@ -48,20 +47,18 @@ def printMetrics(total_size: int, status_codes: Dict[str, int]) -> None:
             print("{}: {}".format(status_code, str(status_codes[status_code])))
 
 
-status_codes: Dict[str, int] = {
-                                "200": 0, "301": 0,
-                                "400": 0, "401": 0,
-                                "403": 0, "404": 0,
-                                "405": 0, "500": 0}
-total_size: int = 0
-lines: int = 0
+status_codes = {
+                "200": 0, "301": 0,
+                "400": 0, "401": 0,
+                "403": 0, "404": 0,
+                "405": 0, "500": 0}
+total_size = 0
+lines = 0
 
 try:
     for line in sys.stdin:
         lines += 1
 
-        status_code: Optional[str]
-        size: Optional[str]
         status_code, size = extract_status_and_size(line.strip())
         if status_code and size:
             total_size += int(size)
