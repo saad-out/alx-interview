@@ -6,8 +6,8 @@ import re
 import sys
 
 
-PATTERN = (r"^(\d{0,3}\.){3}\d{0,3} "
-           r"- \[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}\] "
+PATTERN = (r"^(\S+) ?"
+           r"- ?\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}\] "
            r"\"GET /projects/260 HTTP/1\.1\" "
            r"(\d{3}) (\d+)$")
 
