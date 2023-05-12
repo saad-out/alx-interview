@@ -42,7 +42,7 @@ def printMetrics(total_size, status_codes):
         None
     """
     print("File size: {}".format(str(total_size)))
-    for status_code in ["200", "301", "400", "401", "403", "404", "405", "500"]:
+    for status_code in sorted(status_codes.keys()):
         if status_codes[status_code] != 0:
             print("{}: {}".format(status_code, str(status_codes[status_code])))
 
@@ -67,8 +67,6 @@ try:
 
         if lines >= 10:
             printMetrics(total_size, status_codes)
-            lines = total_size = 0
-            for code in status_codes.keys():
-                status_codes[code] = 0
+            lines = 0
 except KeyboardInterrupt:
     printMetrics(total_size, status_codes)
