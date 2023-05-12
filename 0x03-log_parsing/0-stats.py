@@ -65,8 +65,7 @@ try:
             if status_code in status_codes:
                 status_codes[status_code] += 1
 
-        if lines >= 10:
+        if lines % 10 == 0 and lines != 0:
             printMetrics(total_size, status_codes)
-            lines = 0
 except KeyboardInterrupt:
     printMetrics(total_size, status_codes)
