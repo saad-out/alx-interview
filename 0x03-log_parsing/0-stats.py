@@ -7,9 +7,9 @@ import sys
 
 
 PATTERN = (r"^(\S+) ?"
-           r"- ?\[\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}\.\d{6}\] "
+           r"- ?\[\S+ ?\S+\] "
            r"\"GET /projects/260 HTTP/1\.1\" "
-           r"(\d{3}) (\d+)$")
+           r"(\S+) (\S+)$")
 
 
 def extract_status_and_size(line):
@@ -61,9 +61,15 @@ try:
 
         status_code, size = extract_status_and_size(line.strip())
         if status_code and size:
-            total_size += int(size)
-            if status_code in status_codes:
-                status_codes[status_code] += 1
+            try:
+                total_size += int(size)
+            except Exception:
+                pass
+            try:
+                if status_code in status_codes:
+                    status_codes[status_code] += 1
+            except Exception:
+                pass
 
         if lines % 10 == 0 and lines != 0:
             printMetrics(total_size, status_codes)
