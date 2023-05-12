@@ -67,6 +67,7 @@ try:
 
         if lines % 10 == 0 and lines != 0:
             printMetrics(total_size, status_codes)
+    printMetrics(total_size, status_codes)
 except KeyboardInterrupt:
     printMetrics(total_size, status_codes)
     raise
