@@ -21,10 +21,7 @@ def one_byte(n):
     if len(bin_n) >= BYTE:
         return bin_n[-8:]
     else:
-        leading_zeroes = ''
-        for i in range(BYTE - len(bin_n)):
-            leading_zeroes += '0'
-        return leading_zeroes + bin_n
+        return bin_n.zfill(BYTE)
 
 
 def bytes_count(byte):
