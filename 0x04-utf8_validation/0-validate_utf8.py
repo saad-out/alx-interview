@@ -74,7 +74,7 @@ def validUTF8(data):
             remaining_bytes -= 1
         if remaining_bytes == 0:
             continuation_byte = False
-        elif remaining_bytes >= 0:
+        elif remaining_bytes > 0:
             continuation_byte = True
 
     return True
