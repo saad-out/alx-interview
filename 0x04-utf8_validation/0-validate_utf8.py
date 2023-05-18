@@ -60,9 +60,6 @@ def validUTF8(data):
     Returns:
         bool: True if the data set represents a valid UTF-8 encoding, False
     """
-    if not data or type(data) != list:
-        return False
-
     continuation_byte = False
     remaining_bytes = 0
     for n in data:
