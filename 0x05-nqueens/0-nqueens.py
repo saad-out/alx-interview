@@ -3,10 +3,6 @@
 This program solves the N queens problem.
 """
 import sys
-from typing import (
-    Set,
-    List
-)
 
 
 def main() -> None:
@@ -27,11 +23,11 @@ def main() -> None:
         print("N must be at least 4")
         exit(1)
 
-    columns: Set = set()
-    positive_diagonal: Set = set()
-    negative_diagonal: Set = set()
-    results: List[List] = []
-    board: List[List] = []
+    columns = set()
+    positive_diagonal = set()
+    negative_diagonal = set()
+    results = []
+    board = []
 
     def backtrack(row: int) -> None:
         """
@@ -44,7 +40,7 @@ def main() -> None:
             None.
         """
         if row == N:
-            board_cp: List[List] = board.copy()
+            board_cp = board.copy()
             results.append(board_cp)
             return
 
