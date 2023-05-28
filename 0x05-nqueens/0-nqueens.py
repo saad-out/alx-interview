@@ -26,7 +26,7 @@ def main() -> None:
     columns = set()
     positive_diagonal = set()
     negative_diagonal = set()
-    results = []
+    # results = []
     board = []
 
     def backtrack(row: int) -> None:
@@ -40,8 +40,9 @@ def main() -> None:
             None.
         """
         if row == N:
-            board_cp = board.copy()
-            results.append(board_cp)
+            print(board)
+            # board_cp = board.copy()
+            # results.append(board_cp)
             return
 
         for col in range(N):
@@ -64,8 +65,8 @@ def main() -> None:
             board.remove([row, col])
 
     backtrack(0)
-    for result in results:
-        print(result)
+    # for result in results:
+    #     print(result)
 
 
 if __name__ == '__main__':
