@@ -1,16 +1,16 @@
 #!/usr/bin/node
-const request = require("request");
-const process = require("process");
+const request = require('request');
+const process = require('process');
 
-const URL = "https://swapi-api.alx-tools.com/api/films/";
+const URL = 'https://swapi-api.alx-tools.com/api/films/';
 const filmId = process.argv[2];
 
-request(URL + filmId + "/", (err, res, body) => {
+request(URL + filmId + '/', (err, res, body) => {
   if (err) {
     console.log(err);
     return;
   } else if (res.statusCode !== 200) {
-    console.log("Error");
+    console.log('Error');
     return;
   }
 
@@ -25,7 +25,7 @@ request(URL + filmId + "/", (err, res, body) => {
         console.log(err);
         return;
       } else if (res.statusCode !== 200) {
-        console.log("Error");
+        console.log('Error');
         return;
       }
 
