@@ -12,8 +12,7 @@ def makeChange(coins, total):
     if total <= 0:
         return 0
     elif len(coins) == 0:
-        return  -1
-    
+        return -1
     coins.sort()
     sum = n_coins = 0
     i = len(coins) - 1
