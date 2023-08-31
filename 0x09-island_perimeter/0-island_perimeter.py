@@ -15,19 +15,17 @@ def island_perimeter(grid):
         (int) perimeter of island if it exists
     """
     permiter = 0
-    for i, y in enumerate(grid):
-        if i == 0 or i == len(grid) - 1:
-            continue
-        for j, x in enumerate(y):
-            if x == 1 and j != 0 and j != len(y) - 1:
+    for i in range(len(grid)):
+        for j in range(len(grid[i])):
+            if grid[i][j] == 1:
                 sides = 4
-                if grid[i][j - 1] == 1:
+                if j > 0 and grid[i][j - 1] == 1:
                     sides -= 1
-                if grid[i][j + 1] == 1:
+                if j < len(grid[i]) - 1 and grid[i][j + 1] == 1:
                     sides -= 1
-                if grid[i - 1][j] == 1:
+                if i > 0 and grid[i - 1][j] == 1:
                     sides -= 1
-                if grid[i + 1][j] == 1:
+                if i < len(grid) - 1 and grid[i + 1][j] == 1:
                     sides -= 1
                 permiter += sides
 
